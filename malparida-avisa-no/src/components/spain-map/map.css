@@ -1,0 +1,24 @@
+.map-svg{
+  cursor: move;
+}
+
+.canary-separator{
+  fill: none;
+  stroke: #070068;
+}
+
+.province{
+  fill: #f3f1f2;
+  stroke: #070068;
+}
+
+.zoom-button{
+  background-color: white;
+  margin: 8px 0 8px 8px;
+}
+
+.zoom-button:last-child{
+  background-color: white;
+  margin: 8px;
+}
+
