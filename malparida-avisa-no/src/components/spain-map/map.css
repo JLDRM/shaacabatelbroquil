@@ -22,3 +22,8 @@
   margin: 8px;
 }
 
+.shipment-line{
+  stroke: black;
+  fill: none;
+}
+
