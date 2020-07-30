@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
-  background-color: azure;
+  height: 100%;
+  background-image: linear-gradient(to bottom,palevioletred , plum,white);
   padding: 15% 20%;
 }

@@ -46,11 +46,16 @@ export const Map = () => {
   const ctaBubbleScale = d3.scaleSqrt()
     .range([4, 18]) // radius pixels from to
 
+  const shipmentLineScale = d3.scaleSqrt()
+    .range([3, 8]) // radius pixels from to
+
   function processData(data) {
     console.log(data);
 
     var extent = d3.extent(data, d => d.value);
+    // adjust the scales domains with the number of shipments
     ctaBubbleScale.domain(extent);
+    shipmentLineScale.domain(extent);
 
     var onlyDestination = data.map(d => {
       const destination = { ...d.destination, value: d.value, }
@@ -62,9 +67,7 @@ export const Map = () => {
       .data(onlyDestination)
       .enter()
       .append("circle")
-      .attr("r", d => {
-        return ctaBubbleScale(d.value)
-      })
+      .attr("r", d => ctaBubbleScale(d.value))
       .attr("cx", d =>
         projection([d.coordinates.longitude, d.coordinates.latitude,
         ])[0]
@@ -87,12 +90,14 @@ export const Map = () => {
       .data(shipmentRoutes)
       .enter()
       .append('path')
-      .attr('d', line)
+      .attr('d', d => line(d.routePoints))
       .attr('class', 'shipment-line')
+      .style('stroke-width', d => shipmentLineScale(d.value))
   }
 
   function processShipments(shipments) {
     const shipmentRoutes = [];
+
     shipments.forEach(shipment => {
       var routePoints = [];
 
@@ -107,7 +112,7 @@ export const Map = () => {
         x: targetCoords[0], y: targetCoords[1]
       });
 
-      shipmentRoutes.push(routePoints)
+      shipmentRoutes.push({ routePoints: routePoints, value: shipment.value })
     })
     return shipmentRoutes;
   }
