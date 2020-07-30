@@ -1,6 +1,6 @@
 # SVG Basic Elements:
 
-![svg basic elements](https://github.com/JLDRM/shaacabatelbroquil/blob/master/assets/svg_basic_elements.png?raw=true)
+![svg basic elements](https://github.com/JLDRM/shaacabatelbroquil/blob/master/malparida-avisa-no/src/assets/svg_basic_elements.png)
 
 more info [here](http://slides.com/shirleywu/fm-d3intro) 
 
